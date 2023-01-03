@@ -4,12 +4,14 @@ import com.example.BackendExample.exception.ResourceNotFoundException;
 import com.example.BackendExample.model.Employee;
 import com.example.BackendExample.repository.EmployeeRepository;
 import com.example.BackendExample.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
@@ -28,9 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getEmployeeById(Long id) throws ResourceNotFoundException {
+    public Employee getEmployeeById(Long id) throws ResourceNotFoundException, InterruptedException {
         Optional<Employee> employee = employeeRepository.findById(id);
         if(employee.isPresent()){
+            Thread.sleep(10000);
+            log.info("process for listing employee data with id: {} is completed",id);
             return employee.get();
         }
         else{

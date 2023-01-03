@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmployeeService {
     Employee saveEmployee(Employee employee);
     List<Employee> getAllEmployees();
-    Employee getEmployeeById(Long id);
+    Employee getEmployeeById(Long id) throws InterruptedException;
     Employee updateEmployee(Employee employee, long id);
     void deleteEmployee(long id);
 }

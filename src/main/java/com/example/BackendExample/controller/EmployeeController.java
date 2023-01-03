@@ -54,7 +54,7 @@ public class EmployeeController {
     @GetMapping("{id}")
     public ResponseEntity<? extends Object> getEmployeeById(@PathVariable("id") long employeeId){
         try {
-            log.info("Listing employee by id :{}",employeeId);
+            log.info("process for listing employee by id :{} is started",employeeId);
             return new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeId),HttpStatus.OK);
         }
         catch (ResourceNotFoundException r){
@@ -62,7 +62,7 @@ public class EmployeeController {
             return new ResponseEntity<String>("Employee id doesn't Exist",HttpStatus.NOT_FOUND);
         }
         catch (Exception e){
-            log.error("Error in fetching data");
+            log.error("Error in fetching data for employee id :{}",employeeId);
             return  new ResponseEntity<String>("Error in Fetching Data",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

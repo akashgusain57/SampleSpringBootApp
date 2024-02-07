@@ -36,8 +36,7 @@ public class BackendExampleApplicationTests {
     }
 
     @Test
-    public void getEmployeeByIdTest()
-    {
+    public void getEmployeeByIdTest() throws InterruptedException {
         when(employeeService.getEmployeeById(1L)).thenReturn(new Employee(1,"Lokesh","Gupta","user@email.com"));
 
         Employee emp = employeeService.getEmployeeById(1L);
